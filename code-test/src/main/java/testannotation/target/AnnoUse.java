@@ -8,4 +8,10 @@ public class AnnoUse
 {
 	@AnnoOnlyField
 	String name;
+
+	@AnnoOnlyField(value = "printTime")
+	public void printTime()
+	{
+
+	}
 }
