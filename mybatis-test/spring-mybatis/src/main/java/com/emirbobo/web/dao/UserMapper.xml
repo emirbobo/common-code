@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emirbobo.web.dao.UserMapper">
+    <resultMap type="com.emirbobo.web.model.User"
+               id="userMap">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+    </resultMap>
+
+    <insert id="insertOrUpdate" parameterType="com.emirbobo.web.model.User"
+            useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO t_user_0
+        (
+           uname
+        )
+        VALUE
+        (
+             #{uname}
+         )
+	</insert>
+
+</mapper>  
