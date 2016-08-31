@@ -11,6 +11,7 @@
     <modules>
         <module>spring-mybatis</module>
         <module>mybatis-plugin</module>
+        <module>../code-test</module>
     </modules>
 
 
