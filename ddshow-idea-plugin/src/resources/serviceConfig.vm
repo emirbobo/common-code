@@ -1,0 +1,18 @@
+package $!{package};
+
+#foreach($import in $imports)
+$!{item}
+#end
+public class $!{className}{
+
+  @Autowired
+  $!{mapperClass} $!{mapperName};
+
+
+#foreach($method in $methods)
+  $!{method}
+#end
+
+
+
+}
