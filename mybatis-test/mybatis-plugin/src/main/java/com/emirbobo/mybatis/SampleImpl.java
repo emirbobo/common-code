@@ -6,6 +6,6 @@ package com.emirbobo.mybatis;
 public class SampleImpl implements SampleInterface {
     @Override
     public void print() {
-        System.out.println("ProxySampleImpl invoke.");
+        System.out.println("ProxySampleImpl invoke.....");
     }
 }
