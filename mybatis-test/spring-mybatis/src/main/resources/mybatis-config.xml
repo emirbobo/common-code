@@ -5,9 +5,9 @@
 		<setting name="lazyLoadingEnabled" value="false" />
     </settings>
 
-    <!--<plugins>-->
-        <!--<plugin interceptor="com.youku.mybatis.ShardingPlugin"/>-->
-    <!--</plugins>-->
+    <plugins>
+        <plugin interceptor="com.emirbobo.mybatis.PrintSqlPlugin"/>
+    </plugins>
 
     <!-- alias 
     <typeAliases>
