@@ -8,10 +8,7 @@ import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.logging.jdbc.ConnectionLogger;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.plugin.Interceptor;
-import org.apache.ibatis.plugin.Intercepts;
-import org.apache.ibatis.plugin.Invocation;
-import org.apache.ibatis.plugin.Signature;
+import org.apache.ibatis.plugin.*;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
@@ -34,6 +31,7 @@ public class MyShardingPlugin implements Interceptor
 	private static final Field DELEGATE_FIELD = ReflectionUtils.findField(RoutingStatementHandler.class, "delegate");
 	private static final Field MAPPEDSTATEMENT_FIELD = ReflectionUtils.findField(BaseStatementHandler.class, "mappedStatement");
 	public static final Field SQL_FIELD = ReflectionUtils.findField(BoundSql.class, "sql");
+	private Properties properties;
 
 	private Connection unwrapMybatisConnection(Connection connection) {
         if (Proxy.isProxyClass(connection.getClass())) {
@@ -88,6 +86,7 @@ public class MyShardingPlugin implements Interceptor
 		if (newsql.length() > 0)
 		{
 			log("Old SQL : " + boundSql.getSql());
+			ReflectionUtils.makeAccessible(SQL_FIELD);
 			ReflectionUtils.setField(SQL_FIELD, boundSql, newsql.toString());
 			log("Replace SQL To : " + boundSql.getSql());
 		}
@@ -121,14 +120,13 @@ public class MyShardingPlugin implements Interceptor
 //		}
 	}
 
-	@Override
-	public Object plugin(Object o) {
-		return null;
+
+	public Object plugin(Object target) {
+		return Plugin.wrap(target, this);
 	}
 
-	@Override
-	public void setProperties(Properties properties) {
-
+	public void setProperties(Properties properties0) {
+		this.properties = properties0;
 	}
 	public void log(String s)
 	{
