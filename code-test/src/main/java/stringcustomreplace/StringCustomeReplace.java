@@ -28,7 +28,6 @@ public class StringCustomeReplace {
 			int start = 0;
 			while(matcher.find()) {
 				String found = matcher.group(1);
-				log("Found : [" + found+ "]");
 				if(matcher.start() > start)
 					sb.append(str.substring(start,matcher.start()));
 				sb.append(" Table:");
@@ -39,6 +38,10 @@ public class StringCustomeReplace {
 				sb.append(str.substring(start));
 			log("Result : [" + sb+ "]");
 		}
+		/*
+Result : [select Table:t_user_0 defd test cud Table:T_o_0 from Table:t_p_0 defd group bydfd Table:T_dddd_0]
+Result : [select Table:t_user_0 defd test cud Table:T_o_0 from Table:t_p_0 defd group bydfd Table:T_dddd_0 by]
+		 */
 	}
 
 	private String getReplacedValue(String found) {
