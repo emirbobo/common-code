@@ -1,6 +1,7 @@
 package com.emirbobo.web;
 
 import com.emirbobo.web.dao.UserMapper;
+import com.emirbobo.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -29,10 +30,23 @@ public class MybatisContrller {
         userMapper.insertOrUpdate("zhang-"+System.currentTimeMillis());
     }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public void list(HttpServletRequest request,HttpServletResponse response) {
-        List users = userMapper.listAll();
-        request.setAttribute("users",users);
+    public String list(HttpServletRequest request,HttpServletResponse response) {
 
+
+        System.out.println("Fetch All user");
+        List users = userMapper.listAll();
+//        if(users != null) {
+//            for (Object o : users) {
+//                User user = (User) o;
+//                System.out.println("User[" + user.getUid() + "]" + user.getUname());
+//            }
+//        }
+//        else
+//        {
+//            System.out.println("Null User List");
+//        }
+        request.setAttribute("users",users);
+        return "/list";
     }
 
     @RequestMapping(value = "/")

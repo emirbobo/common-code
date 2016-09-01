@@ -20,7 +20,7 @@
          )
 	</insert>
 
-    <select id="listAll" resultType="java.util.List">
+    <select id="listAll" resultType="java.util.List" resultMap="userMap">
         select * from t_user_0
     </select>
 
