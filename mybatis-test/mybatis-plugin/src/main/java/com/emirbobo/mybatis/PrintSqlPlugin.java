@@ -3,8 +3,10 @@ package com.emirbobo.mybatis;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
 
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -22,8 +24,25 @@ public class PrintSqlPlugin implements Interceptor {
             parameter = invocation.getArgs()[1];
         }
         BoundSql boundSql = mappedStatement.getBoundSql(parameter);
-        System.out.println(boundSql.getSql());
+
+        logSqlInfo(boundSql);
+
         return invocation.proceed();
+    }
+
+    private void logSqlInfo(BoundSql boundSql) {
+
+        System.out.println("PrintSqlPlugin:"+boundSql.getSql());
+
+        List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+        if(parameterMappings != null)
+        {
+            int i=0;
+            for(ParameterMapping parameterMapping : parameterMappings)
+            {
+                System.out.println("ParameterMapping["+(i++)+"]:"+parameterMapping);
+            }
+        }
     }
 
     public Object plugin(Object target) {
