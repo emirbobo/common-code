@@ -49,7 +49,6 @@ public class MyShardingPlugin implements Interceptor
 		Connection conn = (Connection) invocation.getArgs()[0];
 		Connection realConn = unwrapMybatisConnection(conn);
 
-		//youkuShard(invocation);
 		rewriteSql(invocation);
 
 		return invocation.proceed();
@@ -91,35 +90,6 @@ public class MyShardingPlugin implements Interceptor
 			log("Replace SQL To : " + boundSql.getSql());
 		}
 	}
-
-	private void youkuShard(Invocation invocation)
-		{
-//			StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-//			MappedStatement mappedStatement;
-//			if (statementHandler instanceof RoutingStatementHandler) {
-//				StatementHandler delegate = (StatementHandler) ReflectionUtils.getField(DELEGATE_FIELD, statementHandler);
-//				mappedStatement = (MappedStatement) ReflectionUtils.getField(MAPPEDSTATEMENT_FIELD, delegate);
-//			} else {
-//				mappedStatement = (MappedStatement) ReflectionUtils.getField(MAPPEDSTATEMENT_FIELD, statementHandler);
-//			}
-//			if (mappedStatement == null) {
-//				throw new IllegalStateException();
-//			}
-//			ShardingMybatisConnectionInvocationHandler shardingMybatisHandler = (ShardingMybatisConnectionInvocationHandler) handler;
-//			ParameterHandler parameterHandler = statementHandler.getParameterHandler();
-//			shardingMybatisHandler.setParameter(parameterHandler.getParameterObject());
-//			shardingMybatisHandler.setMappedStatement(mappedStatement);
-//
-//			// 分表处理
-//			if (shardingMybatisHandler.getDataSource() instanceof ReadWriteSplittingMybatisDataSourceProxy) {
-//				ReadWriteSplittingMybatisDataSourceProxy dataSource = (ReadWriteSplittingMybatisDataSourceProxy) shardingMybatisHandler.getDataSource();
-//				BoundSql boundSql = statementHandler.getBoundSql();
-//				ShardingTable shardingTable = dataSource.getShardingTable();
-//				if (shardingTable != null) shardingTable.shard(boundSql);
-//			}
-//		}
-	}
-
 
 	public Object plugin(Object target) {
 		return Plugin.wrap(target, this);
