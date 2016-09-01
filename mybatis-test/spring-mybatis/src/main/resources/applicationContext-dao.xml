@@ -62,7 +62,7 @@
             <!--<value>org.gjt.mm.mysql.Driver</value>-->
         <!--</property>-->
         <!--<property name="url">-->
-            <!--<value>jdbc:mysql://localhost:3306/mybatis-1?useUnicode=true&amp;characterEncoding=UTF-8</value>-->
+            <!--<value>jdbc:mysql://localhost:3306/mybatis-2?useUnicode=true&amp;characterEncoding=UTF-8</value>-->
         <!--</property>-->
         <!--<property name="username">-->
             <!--<value>root</value>-->

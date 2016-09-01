@@ -23,7 +23,7 @@ public class PrintSqlPlugin implements Interceptor {
         }
         BoundSql boundSql = mappedStatement.getBoundSql(parameter);
         System.out.println(boundSql.getSql());
-        return boundSql.getSql();
+        return invocation.proceed();
     }
 
     public Object plugin(Object target) {
