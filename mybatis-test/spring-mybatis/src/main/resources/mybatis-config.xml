@@ -6,7 +6,8 @@
     </settings>
 
     <plugins>
-        <plugin interceptor="com.emirbobo.mybatis.PrintSqlPlugin"/>
+        <!--<plugin interceptor="com.emirbobo.mybatis.PrintSqlPlugin"/>-->
+        <plugin interceptor="com.emirbobo.mybatis.myshard.MyShardingPlugin"/>
     </plugins>
 
     <!-- alias 

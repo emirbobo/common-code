@@ -31,20 +31,8 @@ public class MybatisContrller {
     }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(HttpServletRequest request,HttpServletResponse response) {
-
-
         System.out.println("Fetch All user");
         List users = userMapper.listAll();
-//        if(users != null) {
-//            for (Object o : users) {
-//                User user = (User) o;
-//                System.out.println("User[" + user.getUid() + "]" + user.getUname());
-//            }
-//        }
-//        else
-//        {
-//            System.out.println("Null User List");
-//        }
         request.setAttribute("users",users);
         return "/list";
     }

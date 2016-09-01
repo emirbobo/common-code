@@ -10,7 +10,7 @@
 
     <insert id="insertOrUpdate" parameterType="com.emirbobo.web.model.User"
             useGeneratedKeys="true" keyProperty="uid">
-        INSERT INTO t_user_0
+        INSERT INTO t_user
         (
            uname
         )
@@ -21,7 +21,7 @@
 	</insert>
 
     <select id="listAll" resultType="java.util.List" resultMap="userMap">
-        select * from t_user_0
+        select * from t_user
     </select>
 
 </mapper>  
