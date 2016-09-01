@@ -20,4 +20,8 @@
          )
 	</insert>
 
+    <select id="listAll" resultType="java.util.List">
+        select * from t_user_0
+    </select>
+
 </mapper>  
