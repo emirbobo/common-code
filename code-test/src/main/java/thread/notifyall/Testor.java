@@ -23,7 +23,7 @@ public class Testor
 		Set<Thread> set = new HashSet<>();
 		ThreadMaster threadMaster = new ThreadMaster();
 		set.add(threadMaster);
-		for(int i=0;i<5;i++)
+		for(int i=0;i<50;i++)
 		{
 			set.add(new ThreadWait());
 		}
