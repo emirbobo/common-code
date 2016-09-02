@@ -1,6 +1,5 @@
-package com.emirbobo.blockqueue;
+package blockqueue;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
