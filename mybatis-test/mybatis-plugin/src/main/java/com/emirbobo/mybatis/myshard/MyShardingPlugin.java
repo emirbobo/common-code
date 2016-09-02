@@ -31,6 +31,14 @@ public class MyShardingPlugin implements Interceptor
 	private static final Field DELEGATE_FIELD = ReflectionUtils.findField(RoutingStatementHandler.class, "delegate");
 	private static final Field MAPPEDSTATEMENT_FIELD = ReflectionUtils.findField(BaseStatementHandler.class, "mappedStatement");
 	public static final Field SQL_FIELD = ReflectionUtils.findField(BoundSql.class, "sql");
+
+
+	static {
+		ReflectionUtils.makeAccessible(DELEGATE_FIELD);
+		ReflectionUtils.makeAccessible(MAPPEDSTATEMENT_FIELD);
+		ReflectionUtils.makeAccessible(SQL_FIELD);
+	}
+
 	private Properties properties;
 
 	private Connection unwrapMybatisConnection(Connection connection) {
@@ -94,8 +102,9 @@ public class MyShardingPlugin implements Interceptor
 		return Plugin.wrap(target, this);
 	}
 
-	public void setProperties(Properties properties0) {
-		this.properties = properties0;
+	public void setProperties(Properties properties) {
+		this.properties = properties;
+		properties.list(System.out);
 	}
 	public void log(String s)
 	{
