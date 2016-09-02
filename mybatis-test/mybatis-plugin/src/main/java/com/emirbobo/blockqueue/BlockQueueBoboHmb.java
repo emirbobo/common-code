@@ -34,13 +34,13 @@ public class BlockQueueBoboHmb {
     private static void put(){
         int nextPut = new Random().nextInt(1000);
         block.add(nextPut);
-        log("Put "+nextPut);
+        log("Put "+nextPut+"  Size:"+block.size());
 
     }
     private static void take(){
 
         Integer poll = block.poll();
-        log("Take "+poll);
+        log("Take "+poll +"  Size:"+block.size());
     }
     private class consumer implements Runnable{
         @Override
@@ -49,7 +49,7 @@ public class BlockQueueBoboHmb {
                 synchronized (lock) {
                     while (block.size() == 0) {
                         try {
-                            log(block.size()+" empty , wait for put");
+                            log(block.size()+" Empty , Wait for put");
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -59,7 +59,7 @@ public class BlockQueueBoboHmb {
                     lock.notifyAll();
                 }
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -75,7 +75,7 @@ public class BlockQueueBoboHmb {
                 synchronized (lock) {
                     while (block.size() >= full_size) {
                         try {
-                            log(block.size()+" Full , wait for take");
+                            log(block.size()+" Full , Wait for take");
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
