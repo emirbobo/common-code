@@ -7,13 +7,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by xijingbo on 2016-09-02.
  */
-public class BlockQueueBobo {
+public class BlockQueueBoboArrayList {
 
 //    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
     static ArrayList<Integer> block = new ArrayList<Integer>();
 //    String lock = new String();
 
-    static BlockQueueBobo b = new BlockQueueBobo();
+    static BlockQueueBoboArrayList b = new BlockQueueBoboArrayList();
     final int full_size = 10;
 
     public static void main(String [] args){

@@ -7,13 +7,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by xijingbo on 2016-09-02.
  */
-public class BlockQueueBobo {
+public class BlockQueueBoboHmb {
 
-//    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
-    static ArrayList<Integer> block = new ArrayList<Integer>();
-//    String lock = new String();
+    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
+    String lock = new String();
 
-    static BlockQueueBobo b = new BlockQueueBobo();
+    static BlockQueueBoboHmb b = new BlockQueueBoboHmb();
     final int full_size = 10;
 
     public static void main(String [] args){
@@ -40,8 +39,7 @@ public class BlockQueueBobo {
     }
     private static void take(){
 
-//        Integer poll = block.poll();
-        Integer poll = block.get(0);
+        Integer poll = block.poll();
         block.remove(0);
         log("now take value = "+poll);
     }
@@ -49,16 +47,16 @@ public class BlockQueueBobo {
         @Override
         public void run() {
             while(true) {
-                synchronized (block) {
+                synchronized (lock) {
                     while (block.size() == 0) {
                         try {
-                            block.wait();
+                            lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                     take();
-                    block.notifyAll();
+                    lock.notifyAll();
                 }
             }
         }
@@ -69,16 +67,16 @@ public class BlockQueueBobo {
         @Override
         public void run() {
             while(true) {
-                synchronized (block) {
+                synchronized (lock) {
                     while (block.size() >= full_size) {
                         try {
-                            block.wait();
+                            lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                     put();
-                    block.notifyAll();
+                    lock.notifyAll();
                 }
             }
         }
