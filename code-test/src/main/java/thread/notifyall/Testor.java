@@ -3,6 +3,9 @@ package thread.notifyall;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Created by Administrator on 2016/9/2.
@@ -20,21 +23,19 @@ public class Testor
 	}
 
 	private void execute() {
-		Set<Thread> set = new HashSet<>();
+		ExecutorService service = Executors.newFixedThreadPool(30);
 		ThreadMaster threadMaster = new ThreadMaster();
-		set.add(threadMaster);
 		for(int i=0;i<50;i++)
 		{
-			set.add(new ThreadWait());
+			service.execute(new ThreadWait());
 		}
-		for(Thread thread : set)
-			thread.start();
-		for(Thread thread : set)
-			try {
-				thread.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		threadMaster.start();
+		service.shutdown();
+		try {
+			threadMaster.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	class ThreadMaster extends Thread
@@ -60,15 +61,17 @@ public class Testor
 		public void run() {
 			synchronized (lock)
 			{
+				boolean localPrintFlag = true;
 				while (waitFlag)
 				{
 					try {
 						log("Wait-Thread["+this.getName()+"] Start wait ");
 						lock.wait();
+						localPrintFlag = printFlag;//先把标志存起来
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					if(printFlag)
+					if(localPrintFlag)
 						log("Wait-Thread["+this.getName()+"] Print After wait");
 					printFlag = false;
 				}
