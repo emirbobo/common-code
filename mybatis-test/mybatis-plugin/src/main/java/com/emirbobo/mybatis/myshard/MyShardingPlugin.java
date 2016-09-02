@@ -74,7 +74,6 @@ public class MyShardingPlugin implements Interceptor
 		StringBuffer newsql = new StringBuffer();
 		for (String sqlsplit : sqls) {
 			sqlsplit = sqlsplit.trim();
-			//如果是指定前缀开头的，认为是表名，就需要替换
 			if (sqlsplit.toUpperCase().startsWith(SHARD_TABLE_PROFIX))
 			{
 				sqlsplit += "_" + 0;
