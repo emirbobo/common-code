@@ -34,14 +34,13 @@ public class BlockQueueBoboHmb {
     private static void put(){
         int nextPut = new Random().nextInt(1000);
         block.add(nextPut);
-        log("now add nextValue = "+nextPut);
+        log("Put "+nextPut);
 
     }
     private static void take(){
 
         Integer poll = block.poll();
-        block.remove(0);
-        log("now take value = "+poll);
+        log("Take "+poll);
     }
     private class consumer implements Runnable{
         @Override
@@ -50,6 +49,7 @@ public class BlockQueueBoboHmb {
                 synchronized (lock) {
                     while (block.size() == 0) {
                         try {
+                            log(block.size()+" empty , wait for put");
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -57,6 +57,11 @@ public class BlockQueueBoboHmb {
                     }
                     take();
                     lock.notifyAll();
+                }
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -70,6 +75,7 @@ public class BlockQueueBoboHmb {
                 synchronized (lock) {
                     while (block.size() >= full_size) {
                         try {
+                            log(block.size()+" Full , wait for take");
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -78,11 +84,17 @@ public class BlockQueueBoboHmb {
                     put();
                     lock.notifyAll();
                 }
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     private static void log(String v){
         System.out.println(v);
+        System.out.flush();
     }
 }
