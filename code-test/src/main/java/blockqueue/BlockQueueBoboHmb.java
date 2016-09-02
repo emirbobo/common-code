@@ -1,19 +1,17 @@
-package com.emirbobo.blockqueue;
+package blockqueue;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by xijingbo on 2016-09-02.
  */
-public class BlockQueueBobo {
+public class BlockQueueBoboHmb {
 
-//    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
-    static ArrayList<Integer> block = new ArrayList<Integer>();
-//    String lock = new String();
+    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
+    String lock = new String();
 
-    static BlockQueueBobo b = new BlockQueueBobo();
+    static BlockQueueBoboHmb b = new BlockQueueBoboHmb();
     final int full_size = 10;
 
     public static void main(String [] args){
@@ -35,30 +33,34 @@ public class BlockQueueBobo {
     private static void put(){
         int nextPut = new Random().nextInt(1000);
         block.add(nextPut);
-        log("now add nextValue = "+nextPut);
+        log("Put "+nextPut+"  Size:"+block.size());
 
     }
     private static void take(){
 
-//        Integer poll = block.poll();
-        Integer poll = block.get(0);
-        block.remove(0);
-        log("now take value = "+poll);
+        Integer poll = block.poll();
+        log("Take "+poll +"  Size:"+block.size());
     }
     private class consumer implements Runnable{
         @Override
         public void run() {
             while(true) {
-                synchronized (block) {
+                synchronized (lock) {
                     while (block.size() == 0) {
                         try {
-                            block.wait();
+                            log(block.size()+" Empty , Wait for put");
+                            lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                     take();
-                    block.notifyAll();
+                    lock.notifyAll();
+                }
+                try {
+                    Thread.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -69,16 +71,22 @@ public class BlockQueueBobo {
         @Override
         public void run() {
             while(true) {
-                synchronized (block) {
+                synchronized (lock) {
                     while (block.size() >= full_size) {
                         try {
-                            block.wait();
+                            log(block.size()+" Full , Wait for take");
+                            lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
                     put();
-                    block.notifyAll();
+                    lock.notifyAll();
+                }
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -86,5 +94,6 @@ public class BlockQueueBobo {
 
     private static void log(String v){
         System.out.println(v);
+        System.out.flush();
     }
 }

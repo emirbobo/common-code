@@ -1,19 +1,18 @@
-package com.emirbobo.blockqueue;
+package blockqueue;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by xijingbo on 2016-09-02.
  */
-public class BlockQueueBoboArrayList {
+public class BlockQueueBobo {
 
 //    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
     static ArrayList<Integer> block = new ArrayList<Integer>();
 //    String lock = new String();
 
-    static BlockQueueBoboArrayList b = new BlockQueueBoboArrayList();
+    static BlockQueueBobo b = new BlockQueueBobo();
     final int full_size = 10;
 
     public static void main(String [] args){
