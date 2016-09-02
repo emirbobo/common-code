@@ -24,34 +24,34 @@ public class Testor
 
 	private void execute() {
 		ExecutorService service = Executors.newFixedThreadPool(30);
-		ThreadMaster threadMaster = new ThreadMaster();
-		for(int i=0;i<50;i++)
+
+		service.execute(new ThreadMaster());
+		for(int i=0;i<5;i++)
 		{
 			service.execute(new ThreadWait());
 		}
-		threadMaster.start();
+
 		service.shutdown();
-		try {
-			threadMaster.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 	class ThreadMaster extends Thread
 	{
 		@Override
 		public void run() {
+
+			try {
+				Thread.sleep(5000);//先不进入锁，等待其他线程进入锁后，处于wait状态
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
 			synchronized (lock)
 			{
-				try {
-					Thread.sleep(5000);
-					waitFlag = false;
-					lock.notifyAll();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				log("Master-Thread["+this.getName()+"] executing !");
+				waitFlag = false;
+				lock.notifyAll();
 			}
+			log("Master-Thread["+this.getName()+"] exit!");
 		}
 	}
 
@@ -82,5 +82,6 @@ public class Testor
 	static void log(String info)
 	{
 		System.out.println(info);
+		System.out.flush();
 	}
 }
