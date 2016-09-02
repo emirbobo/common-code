@@ -23,8 +23,7 @@ public class Testor
 	}
 
 	private void execute() {
-		ExecutorService service = Executors.newFixedThreadPool(30);
-
+		ExecutorService service = Executors.newFixedThreadPool(5);
 		service.execute(new ThreadMaster());
 		for(int i=0;i<5;i++)
 		{
