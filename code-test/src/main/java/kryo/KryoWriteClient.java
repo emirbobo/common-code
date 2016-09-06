@@ -27,7 +27,6 @@ public class KryoWriteClient {
         try {     
             client.start();
             Kryo k = new Kryo ();
-            ObjectAndByte oa = new ObjectAndByte();
             ZookeeperTest zt = new ZookeeperTest();
             zt.setName("ehhe");
             zt.print();
