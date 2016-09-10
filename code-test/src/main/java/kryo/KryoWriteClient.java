@@ -31,7 +31,7 @@ public class KryoWriteClient {
             zt.setName("ehhe");
             zt.print();
             Output output = new Output(1, 4096); 
-            k.setRegistrationRequired(false);
+//            k.setRegistrationRequired(true);
             k.writeObject(output, zt);
             byte[] b = output.toBytes(); 
 //            byte[] b = oa.toByteArray(zt);
