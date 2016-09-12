@@ -34,8 +34,8 @@ public class Testor {
 
 		appClient.executeTask(
 				Task.createCommonTask(
-						Pack.createCommonTask("https://wwwwwwwwwwwwwww").addHeader("ddddd","dddd")
-						,Pack.createCommonTask("https://wwwwwwwwwwwwwww",true)
+						Pack.createCommonTask("https://www.163.com").addHeader("ddddd","dddd")
+						,Pack.createCommonTask("https://weibo.com",true)
 		));
 	}
 }
