@@ -62,4 +62,12 @@ abstract public class Pack
 	public String getInfo() {
 		return info;
 	}
+
+	public static PackCommon createCommonTask(String url) {
+		return new PackCommon(url,false);
+	}
+
+	public static PackCommon createCommonTask(String url, boolean b) {
+		return new PackCommon(url,b);
+	}
 }

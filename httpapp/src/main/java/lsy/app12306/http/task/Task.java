@@ -1,6 +1,7 @@
 package lsy.app12306.http.task;
 
 import lsy.app12306.http.pack.Pack;
+import lsy.app12306.http.pack.PackCommon;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -51,5 +52,12 @@ public abstract class Task {
 		else
 			finish = true;
 		return pack;
+	}
+
+	public static Task createCommonTask(PackCommon ... packArr)
+	{
+		TaskCommon task = new TaskCommon();
+		task.appendPack(packArr);
+		return task;
 	}
 }
