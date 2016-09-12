@@ -1,8 +1,8 @@
-package lsy.app12306;
+package lsy.app.main;
 
-import lsy.app12306.http.task.Task;
-import lsy.app12306.http.task.TaskReady;
-import lsy.app12306.http.task.TaskLogin;
+import lsy.app.http.task.Task;
+import lsy.app.http.task.TaskReady;
+import lsy.app.http.task.TaskLogin;
 import lsy.util.UtilConsole;
 
 /**
@@ -18,7 +18,7 @@ public class Testor {
 	private void execute() {
 		if(! appClient.isInit())
 		{
-			UtilConsole.log("AppClient ��ʼ��ʧ��");
+			UtilConsole.log("AppClient exit");
 			return;
 		}
 

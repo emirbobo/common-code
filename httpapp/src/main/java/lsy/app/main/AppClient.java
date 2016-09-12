@@ -1,9 +1,9 @@
-package lsy.app12306;
+package lsy.app.main;
 
-import lsy.app12306.http.SSLHttpClient;
-import lsy.app12306.http.SSLHttpClientBuilder;
-import lsy.app12306.http.pack.Pack;
-import lsy.app12306.http.task.Task;
+import lsy.app.http.SSLHttpClient;
+import lsy.app.http.SSLHttpClientBuilder;
+import lsy.app.http.pack.Pack;
+import lsy.app.http.task.Task;
 import lsy.util.UtilConsole;
 
 /**

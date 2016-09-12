@@ -1,13 +1,13 @@
-package lsy.app12306.http.pack;
+package lsy.app.http.pack;
 
-import lsy.app12306.AppClient;
+import lsy.app.main.AppClient;
 import lsy.util.UtilConsole;
 import org.apache.http.StatusLine;
 
 /**
  * Created by Administrator on 2016/9/12.
- * ²âÊÔÃ²ËÆµÇÂ¼Ç°»áÏÈ²éÑ¯·þÎñÆ÷×´Ì¬
- * Ä¿Ç°³¬¹ýÍíÉÏ11µãÌáÊ¾²»ÄÜµÇÂ¼
+ * ï¿½ï¿½ï¿½ï¿½Ã²ï¿½Æµï¿½Â¼Ç°ï¿½ï¿½ï¿½È²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+ * Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½11ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Üµï¿½Â¼
  */
 public class PackQuery extends Pack
 {
@@ -35,10 +35,10 @@ public class PackQuery extends Pack
 					{
 						String WL_Instance_Id = response.substring(start,end);
 						UtilConsole.info("Find New WL-Instance-Id : "+WL_Instance_Id);
-						//ÐÞÕýheader
+						//ï¿½ï¿½ï¿½ï¿½header
 						appClient.addFixHeader("WL-Instance-Id",WL_Instance_Id);
 						appClient.addFixHeader("x-wl-app-version", "2.4");
-						//Ìí¼ÓÒ»¸öquery°ü
+						//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½queryï¿½ï¿½
 						appClient.getCurTask().appendPack(new PackQuery().setInfo("Append updated fix-header [WL-Instance-Id] = ["+WL_Instance_Id+"]"));
 					}
 				}
