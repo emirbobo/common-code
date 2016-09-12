@@ -36,9 +36,10 @@ abstract public class Pack
 		this(url, true);
 		addHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
 	}
-	protected void addHeader(String n,String v)
+	public Pack addHeader(String n,String v)
 	{
 		headers.put(n,v);
+		return this;
 	}
 
 	public HashMap<String, String> getHeaders() {
