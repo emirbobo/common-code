@@ -1,15 +1,18 @@
-package lsy.app12306.http.task;
+package lsy.app.http.task;
 
+<<<<<<< HEAD:httpapp/src/main/java/lsy/app12306/http/task/Task.java
 import lsy.app12306.http.pack.Pack;
 import lsy.app12306.http.pack.PackCommon;
+=======
+import lsy.app.http.pack.Pack;
+>>>>>>> ef0dc8290826d8fc932ddb71b112d8b710c25e32:httpapp/src/main/java/lsy/app/http/task/Task.java
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/9/12.
- * httpÈÎÎñ£¬·¢ËÍÒ»¸ö°üÐòÁÐ
+ * httpï¿½ï¿½ï¿½ñ£¬·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public abstract class Task {
 	private boolean finish = false;
@@ -18,7 +21,7 @@ public abstract class Task {
 
 	}
 
-	List<Pack> packs = new ArrayList<>();//·¢°üÐòÁÐ
+	List<Pack> packs = new ArrayList<>();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int curPackIndex = 0;
 
 	public boolean isFinish() {
@@ -27,7 +30,7 @@ public abstract class Task {
 
 
 	/**
-	 * ÔÚ°üÐòÁÐÄ©Î²Ìí¼Ó·¢°ü
+	 * ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½Ä©Î²ï¿½ï¿½Ó·ï¿½ï¿½ï¿½
 	 * @param packArr
 	 */
 	public void appendPack(Pack... packArr) {
@@ -46,7 +49,7 @@ public abstract class Task {
 		{
 			pack = packs.get(curPackIndex);
 			curPackIndex++;
-//			if(curPackIndex == packs.size())//´Ë´¦²»¼ì²éµ±Ç°ÊÇ·ñ×îºóÒ»¸ö°ü£¬´¦Àí¹ý³ÌÖÐ¿ÉÄÜ»áÔö¼ÓÐÂµÄ·¢°ü
+//			if(curPackIndex == packs.size())//ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½éµ±Ç°ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½
 //				finish = true;
 		}
 		else

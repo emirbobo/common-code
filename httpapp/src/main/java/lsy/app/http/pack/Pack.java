@@ -1,6 +1,6 @@
-package lsy.app12306.http.pack;
+package lsy.app.http.pack;
 
-import lsy.app12306.AppClient;
+import lsy.app.main.AppClient;
 import org.apache.http.StatusLine;
 
 import java.util.HashMap;
@@ -44,7 +44,7 @@ abstract public class Pack
 	public HashMap<String, String> getHeaders() {
 		return headers;
 	}
-	public abstract void handleResult(AppClient appClient, StatusLine statusLine, String response);//»Øµ÷´¦Àí½á¹û
+	public abstract void handleResult(AppClient appClient, StatusLine statusLine, String response);//ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	public String getUrl() {
 		return url;

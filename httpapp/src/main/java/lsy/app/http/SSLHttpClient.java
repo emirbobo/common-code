@@ -1,8 +1,7 @@
-package lsy.app12306.http;
+package lsy.app.http;
 
-import lsy.app12306.AppClient;
-import lsy.app12306.http.pack.Pack;
-import lsy.ssltest.MyX509TrustManager;
+import lsy.app.main.AppClient;
+import lsy.app.http.pack.Pack;
 import lsy.util.UtilConsole;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -30,7 +29,6 @@ import javax.net.ssl.TrustManager;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
 import java.util.HashMap;
 
 /**
@@ -41,7 +39,7 @@ public class SSLHttpClient
 
 	CloseableHttpClient sslHttpclient = null;
 
-	HashMap<String, String> fixedHeaders;//…Ë÷√πÃ∂®µƒheader
+	HashMap<String, String> fixedHeaders;//ÔøΩÔøΩÔøΩ√πÃ∂ÔøΩÔøΩÔøΩheader
 
 	protected SSLHttpClient() {
 		createSslHttpclient();
@@ -59,7 +57,7 @@ public class SSLHttpClient
 			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 			FileInputStream instream = new FileInputStream(new File("d:\\tomcat.keystore"));
 			try {
-				// º”‘ÿkeyStore d:\\tomcat.keystore
+				// ÔøΩÔøΩÔøΩÔøΩkeyStore d:\\tomcat.keystore
 				trustStore.load(instream, "123456".toCharArray());
 			} catch (CertificateException e) {
 				e.printStackTrace();
@@ -69,7 +67,7 @@ public class SSLHttpClient
 				} catch (Exception ignore) {
 				}
 			}
-			// œ‡–≈◊‘º∫µƒCA∫ÕÀ˘”–◊‘«©√˚µƒ÷§ È
+			// ÔøΩÔøΩÔøΩÔøΩÔøΩ‘ºÔøΩÔøΩÔøΩCAÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ«©ÔøΩÔøΩÔøΩÔøΩ÷§ÔøΩÔøΩ
 			SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(trustStore, new TrustSelfSignedStrategy()).build();x
 			*/
 
@@ -78,7 +76,7 @@ public class SSLHttpClient
 			X509HostnameVerifier hostnameVerifier = new AllowAllHostnameVerifier();
 
 			/*
-			// ÷ª‘ –Ì π”√TLSv1–≠“È
+			// ÷ªÔøΩÔøΩÔøΩÔøΩ πÔøΩÔøΩTLSv1–≠ÔøΩÔøΩ
 			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[] { "SSL","TLSv1" }, null,
 					SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
 					*/
@@ -143,7 +141,7 @@ public class SSLHttpClient
 		else
 			request = new HttpGet(url);
 		///////////////////////////////////////////////////////////
-		//…Ë÷√ Õ®”√πÃ∂® headers
+		//ÔøΩÔøΩÔøΩÔøΩ Õ®ÔøΩ√πÃ∂ÔøΩ headers
 		if(fixedHeaders != null && fixedHeaders.size() > 0)
 		{
 			for(String n : fixedHeaders.keySet())
@@ -154,7 +152,7 @@ public class SSLHttpClient
 			}
 		}
 		///////////////////////////////////////////////////////////
-		//…Ë÷√ ∞¸∂®÷∆ headers
+		//ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ headers
 		if( pack.getHeaders().size() > 0)
 		{
 			for(String n : pack.getHeaders().keySet())

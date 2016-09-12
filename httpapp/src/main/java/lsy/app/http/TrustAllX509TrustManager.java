@@ -1,4 +1,4 @@
-package lsy.app12306.http;
+package lsy.app.http;
 
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
@@ -6,7 +6,7 @@ import java.security.cert.X509Certificate;
 
 /**
  * Created by Administrator on 2014/9/10.
- * ĞÅÈÎËùÓĞÖ¤Êé
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½
  */
 public class TrustAllX509TrustManager implements X509TrustManager
 {
