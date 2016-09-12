@@ -1,11 +1,8 @@
 package lsy.app.http.task;
 
-<<<<<<< HEAD:httpapp/src/main/java/lsy/app12306/http/task/Task.java
-import lsy.app12306.http.pack.Pack;
-import lsy.app12306.http.pack.PackCommon;
-=======
 import lsy.app.http.pack.Pack;
->>>>>>> ef0dc8290826d8fc932ddb71b112d8b710c25e32:httpapp/src/main/java/lsy/app/http/task/Task.java
+import lsy.app.http.pack.PackCommon;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +54,7 @@ public abstract class Task {
 		return pack;
 	}
 
-	public static Task createCommonTask(PackCommon ... packArr)
+	public static Task createCommonTask(PackCommon... packArr)
 	{
 		TaskCommon task = new TaskCommon();
 		task.appendPack(packArr);

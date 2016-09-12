@@ -1,6 +1,7 @@
-package lsy.app12306.http.pack;
+package lsy.app.http.pack;
 
-import lsy.app12306.AppClient;
+
+import lsy.app.main.AppClient;
 import org.apache.http.StatusLine;
 
 /**
