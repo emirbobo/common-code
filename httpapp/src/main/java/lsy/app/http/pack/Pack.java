@@ -67,7 +67,7 @@ abstract public class Pack
 		return new PackCommon(url,false);
 	}
 
-	public static PackCommon createCommonTask(String url, boolean b) {
-		return new PackCommon(url,b);
+	public static PackCommon createCommonTask(String url, boolean post) {
+		return new PackCommon(url,post);
 	}
 }
