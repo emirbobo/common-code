@@ -19,6 +19,21 @@
     </properties>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.netty</groupId>-->
+            <!--<artifactId>netty</artifactId>-->
+            <!--<version>3.2.2.Final</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.0.25.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>apache-curator</artifactId>
@@ -44,7 +59,11 @@
             <artifactId>kryo</artifactId>
             <version>2.24.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5</version>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>com.esotericsoftware</groupId>-->
             <!--<artifactId>kryo</artifactId>-->

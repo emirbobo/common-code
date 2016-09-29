@@ -1,6 +1,7 @@
 package kryo;
 
 import kryo.model.ZookeeperTest;
+import kryo.model.ZookeeperTest1;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -29,7 +30,7 @@ public class KryoReadClient {
             byte[] b = client.getData().forPath(PATH);
             System.out.println(b.length);
             Input i = new Input(b);
-            ZookeeperTest zt1 = k.readObject(i,ZookeeperTest.class);
+            ZookeeperTest1 zt1 = k.readObject(i,ZookeeperTest1.class);
             System.out.println("新建的节点，data为:" + zt1.print()+"---"+zt1.getName());
             
 //            client.setData().forPath(PATH, "I love football".getBytes());  

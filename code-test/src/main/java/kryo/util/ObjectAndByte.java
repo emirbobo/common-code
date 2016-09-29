@@ -12,7 +12,7 @@ public class ObjectAndByte {
      * @param obj  
      * @return  
      */  
-    public byte[] toByteArray (Object obj) {      
+    public static byte[] toByteArray (Object obj) {
         byte[] bytes = null;      
         ByteArrayOutputStream bos = new ByteArrayOutputStream();      
         try {        
@@ -33,7 +33,7 @@ public class ObjectAndByte {
      * @param bytes  
      * @return  
      */  
-    public Object toObject (byte[] bytes) {      
+    public static Object toObject (byte[] bytes) {
         Object obj = null;
         try {        
             ByteArrayInputStream bis = new ByteArrayInputStream (bytes);        

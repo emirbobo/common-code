@@ -38,8 +38,10 @@ public class MybatisContrller {
     }
 
     @RequestMapping(value = "/")
-    public String home() {
-        System.out.println("hello world");
+    public String home(HttpServletRequest request) {
+
+        String agent = request.getHeader("user-agent");
+        System.out.println("hello world " +agent);
         return "/index";
     }
 

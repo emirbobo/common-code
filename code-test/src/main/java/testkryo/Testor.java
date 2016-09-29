@@ -14,8 +14,8 @@ public class Testor
 {
 	public static void main(String[] args) {
 		Testor testor = new Testor();
-		boolean needSerializeClassInfo = false;//是否存储类信息
-//		boolean needSerializeClassInfo = true;//是否存储类信息
+//		boolean needSerializeClassInfo = false;//是否存储类信息
+		boolean needSerializeClassInfo = true;//是否存储类信息
 		String filePath = "student.kryo."+ (needSerializeClassInfo ? "haveClassInfo" : "noClassInfo");
 		testor.testSerialize(needSerializeClassInfo,filePath);
 		testor.testReverseSerialize(needSerializeClassInfo,filePath);
