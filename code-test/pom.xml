@@ -60,6 +60,18 @@
             <version>4.2.3.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.5.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-example</artifactId>
+            <version>4.1.5.Final</version>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.esotericsoftware</groupId>-->
             <!--<artifactId>kryo</artifactId>-->
