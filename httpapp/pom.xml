@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>lsy</groupId>
+  <artifactId>http-app</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>netty-http-proxy</name>
+  <url>http://maven.apache.org</url>
+
+    <distributionManagement>
+        <repository>
+            <id>jar-repository</id>
+            <name>Temp Jar Repository</name>
+            <url>file://${basedir}/target/deploy</url>
+        </repository>
+    </distributionManagement>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+          <version>4.3.4</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-all</artifactId>
+          <version>4.0.21.Final</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+          <version>4.1.0.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>4.1.0.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>4.1.0.RELEASE</version>
+      </dependency>
+
+      <!--<dependency>-->
+          <!--<groupId>io.netty</groupId>-->
+          <!--<artifactId>netty</artifactId>-->
+          <!--<version>3.9.2.Final</version>-->
+      <!--</dependency>-->
+
+  </dependencies>
+
+    <build>
+        <finalName>httpproxy</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <webResources>
+                        <!--<resource>-->
+                            <!--<directory>${basedir}/src/main/resources</directory>-->
+                        <!--</resource>-->
+                    </webResources>
+                    <!--<webXml>${basedir}/WebRoot/WEB-INF/web.xml</webXml>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>clean_jars</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <target>
+                                <delete failonerror="false" includeEmptyDirs="true">
+                                    <fileset dir="${basedir}/WebRoot/WEB-INF/lib/" includes="*.jar"/>
+                                </delete>
+                                <delete failonerror="false" includeEmptyDirs="true">
+                                    <fileset dir="${basedir}/WebRoot/WEB-INF/classes" includes="**/*"/>
+                                </delete>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>deploy_jars</id>
+                        <phase>deploy</phase>
+                        <configuration>
+                            <target>
+                                <copy todir="${basedir}/run/">
+                                    <fileset dir="${project.build.directory}">
+                                        <!--exclude name="javassist-3.11.0.GA.jar"/-->
+                                        <include name="${build.finalName}.jar"/>
+                                    </fileset>
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <!--<execution>-->
+                    <!--<id>enhance_entity</id>-->
+                    <!--<phase>generate-sources</phase>-->
+                    <!--<configuration>-->
+                    <!--<target name="z_entityFileEnhance">-->
+                    <!--<taskdef name="do_replace"-->
+                    <!--classname="com.common.ant.ReplaceFileContentTask"-->
+                    <!--classpathref="compile.classpath"/>-->
+                    <!--<do_replace>-->
+                    <!--<replacement find="lsy.cms.type.hibernate.ColumnTypeConverter" replace="lsy.cms.type.ColumnType" regexp="false"></replacement>-->
+                    <!--<fileset dir="${basedir}/src/com/wfg/entity" includes="**/*.java">-->
+                    <!--</fileset>-->
+                    <!--</do_replace>-->
+                    <!--</target>-->
+                    <!--</configuration>-->
+                    <!--<goals>-->
+                    <!--<goal>run</goal>-->
+                    <!--</goals>-->
+                    <!--</execution>-->
+                    <!--execution>
+                        <id>ftp</id>
+                        <phase>deploy</phase>
+                        <configuration>
+                            <target>
+
+                                <ftp action="send" server="myhost" remotedir="/home/test" userid="x" password="y" depends="yes" verbose="yes">
+                                    <fileset dir="${project.build.directory}">
+                                        <include name="*.jar" />
+                                    </fileset>
+                                </ftp>
+
+                                <taskdef name="myTask" classname="com.acme.MyTask" classpathref="maven.plugin.classpath"/>
+                                <myTask a="b"/>
+
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution-->
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>commons-net</groupId>
+                        <artifactId>commons-net</artifactId>
+                        <version>1.4.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-commons-net</artifactId>
+                        <version>1.8.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
