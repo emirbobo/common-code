@@ -36,9 +36,10 @@ abstract public class Pack
 		this(url, true);
 		addHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
 	}
-	protected void addHeader(String n,String v)
+	public Pack addHeader(String n,String v)
 	{
 		headers.put(n,v);
+		return this;
 	}
 
 	public HashMap<String, String> getHeaders() {
@@ -67,7 +68,7 @@ abstract public class Pack
 		return new PackCommon(url,false);
 	}
 
-	public static PackCommon createCommonTask(String url, boolean b) {
-		return new PackCommon(url,b);
+	public static PackCommon createCommonTask(String url, boolean post) {
+		return new PackCommon(url,post);
 	}
 }

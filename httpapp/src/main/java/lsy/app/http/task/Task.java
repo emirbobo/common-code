@@ -54,7 +54,7 @@ public abstract class Task {
 		return pack;
 	}
 
-	public static Task createCommonTask(PackCommon... packArr)
+	public static Task createCommonTask(Pack ... packArr)
 	{
 		TaskCommon task = new TaskCommon();
 		task.appendPack(packArr);
