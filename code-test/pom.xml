@@ -75,11 +75,8 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-<<<<<<< HEAD
-            <version>3.4.8</version>
-=======
+            <!--<version>3.4.8</version>-->
             <version>3.4.6</version>
->>>>>>> d97606a521cc318ef80e4380a20e5a45754f4d58
         </dependency>
 
         <dependency>
@@ -100,7 +97,6 @@
         </dependency>
 
         <dependency>
-<<<<<<< HEAD
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>4.1.2.RELEASE</version>
@@ -115,19 +111,18 @@
             <artifactId>spring-context</artifactId>
             <version>4.1.2.RELEASE</version>
         </dependency>
-=======
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.5.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-example</artifactId>
-            <version>4.1.5.Final</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.netty</groupId>-->
+            <!--<artifactId>netty-example</artifactId>-->
+            <!--<version>4.1.5.Final</version>-->
+        <!--</dependency>-->
 
->>>>>>> d97606a521cc318ef80e4380a20e5a45754f4d58
         <!--<dependency>-->
             <!--<groupId>com.esotericsoftware</groupId>-->
             <!--<artifactId>kryo</artifactId>-->
