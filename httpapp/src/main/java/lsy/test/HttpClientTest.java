@@ -45,7 +45,7 @@ public class HttpClientTest {
 	}
 
 	/**
-	 * HttpClient连接SSL
+	 * HttpClient????SSL
 	 */
 	public void ssl() {
 		CloseableHttpClient httpclient = null;
@@ -53,7 +53,7 @@ public class HttpClientTest {
 			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 			FileInputStream instream = new FileInputStream(new File("d:\\tomcat.keystore"));
 			try {
-				// 加载keyStore d:\\tomcat.keystore
+				// ????keyStore d:\\tomcat.keystore
 				trustStore.load(instream, "123456".toCharArray());
 			} catch (CertificateException e) {
 				e.printStackTrace();
@@ -63,13 +63,13 @@ public class HttpClientTest {
 				} catch (Exception ignore) {
 				}
 			}
-			// 相信自己的CA和所有自签名的证书
+			// ?????????CA????????????????
 			SSLContext sslcontext = SSLContexts.custom().loadTrustMaterial(trustStore, new TrustSelfSignedStrategy()).build();
-			// 只允许使用TLSv1协议
+			// ????????TLSv1Э??
 			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[] { "TLSv1" }, null,
 					SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
 			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
-			// 创建http请求(get方式)
+			// ????http????(get???)
 			HttpGet httpget = new HttpGet("https://localhost:8443/myDemo/Ajax/serivceJ.action");
 			System.out.println("executing request" + httpget.getRequestLine());
 			CloseableHttpResponse response = httpclient.execute(httpget);
@@ -107,14 +107,14 @@ public class HttpClientTest {
 	}
 
 	/**
-	 * post方式提交表单（模拟用户登录请求）
+	 * post??????????????????????
 	 */
 	public void postForm() {
-		// 创建默认的httpClient实例.
+		// ????????httpClient???.
 		CloseableHttpClient httpclient = HttpClients.createDefault();
-		// 创建httppost
+		// ????httppost
 		HttpPost httppost = new HttpPost("http://localhost:8080/myDemo/Ajax/serivceJ.action");
-		// 创建参数队列
+		// ????????????
 		List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 		formparams.add(new BasicNameValuePair("username", "admin"));
 		formparams.add(new BasicNameValuePair("password", "123456"));
@@ -141,7 +141,7 @@ public class HttpClientTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// 关闭连接,释放资源
+			// ???????,??????
 			try {
 				httpclient.close();
 			} catch (IOException e) {
@@ -151,14 +151,14 @@ public class HttpClientTest {
 	}
 
 	/**
-	 * 发送 post请求访问本地应用并根据传递参数不同返回不同结果
+	 * ???? post????????????ò???????????????????????
 	 */
 	public void post() {
-		// 创建默认的httpClient实例.
+		// ????????httpClient???.
 		CloseableHttpClient httpclient = HttpClients.createDefault();
-		// 创建httppost
+		// ????httppost
 		HttpPost httppost = new HttpPost("http://localhost:8080/myDemo/Ajax/serivceJ.action");
-		// 创建参数队列
+		// ????????????
 		List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 		formparams.add(new BasicNameValuePair("type", "house"));
 		UrlEncodedFormEntity uefEntity;
@@ -184,7 +184,7 @@ public class HttpClientTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// 关闭连接,释放资源
+			// ???????,??????
 			try {
 				httpclient.close();
 			} catch (IOException e) {
@@ -194,26 +194,26 @@ public class HttpClientTest {
 	}
 
 	/**
-	 * 发送 get请求
+	 * ???? get????
 	 */
 	public void get() {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
-			// 创建httpget.
+			// ????httpget.
 			HttpGet httpget = new HttpGet("http://www.baidu.com/");
 			System.out.println("executing request " + httpget.getURI());
-			// 执行get请求.
+			// ???get????.
 			CloseableHttpResponse response = httpclient.execute(httpget);
 			try {
-				// 获取响应实体
+				// ?????????
 				HttpEntity entity = response.getEntity();
 				System.out.println("--------------------------------------");
-				// 打印响应状态
+				// ????????
 				System.out.println(response.getStatusLine());
 				if (entity != null) {
-					// 打印响应内容长度
+					// ?????????????
 					System.out.println("Response content length: " + entity.getContentLength());
-					// 打印响应内容
+					// ??????????
 					System.out.println("Response content: " + EntityUtils.toString(entity));
 				}
 				System.out.println("------------------------------------");
@@ -227,7 +227,7 @@ public class HttpClientTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// 关闭连接,释放资源
+			// ???????,??????
 			try {
 				httpclient.close();
 			} catch (IOException e) {
@@ -237,7 +237,7 @@ public class HttpClientTest {
 	}
 
 	/**
-	 * 上传文件
+	 * ??????
 	 */
 	/*
 	public void upload() {

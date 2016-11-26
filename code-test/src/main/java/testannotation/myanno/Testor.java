@@ -1,13 +1,25 @@
 package testannotation.myanno;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Administrator on 2016/8/31.
  */
 public class Testor
 {
 	public static void main(String[] args) {
-		Testor testor = new Testor();
-		testor.execute();
+//		Testor testor = new Testor();
+//		testor.execute();
+		match();
+	}
+
+	public static void match(){
+		Pattern pattern = Pattern.compile("<[\\w]+|\\[\\w]+>");
+		Matcher matcher = pattern.matcher("<p>sfedsfd</p><p>vdfsfd</p>");
+		while(matcher.find()){
+			System.out.println(matcher.group());
+		}
 	}
 
 	private void execute() {

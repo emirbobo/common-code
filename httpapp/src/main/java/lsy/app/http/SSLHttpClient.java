@@ -39,7 +39,7 @@ public class SSLHttpClient
 
 	CloseableHttpClient sslHttpclient = null;
 
-	HashMap<String, String> fixedHeaders;//���ù̶���header
+	HashMap<String, String> fixedHeaders;
 
 	protected SSLHttpClient() {
 		createSslHttpclient();

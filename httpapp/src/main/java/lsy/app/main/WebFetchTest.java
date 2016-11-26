@@ -1,5 +1,6 @@
 package lsy.app.main;
 
+import lsy.app.http.pack.Pack;
 import lsy.app.http.task.Task;
 import lsy.app.http.task.TaskLogin;
 import lsy.app.http.task.TaskReady;
@@ -25,9 +26,12 @@ public class WebFetchTest {
 		UtilConsole.log("AppClient 启动");
 
 		Task task = new TaskReady();
-		appClient.executeTask(task);
+		appClient.executeTask(
+				Task.createCommonTask(
+						Pack.createCommonTask("https://wwwwwwwwwwwwwww")
+						,Pack.createCommonTask("https://wwwwwwwwwwwwwww",true)
+				));
 
-		task = new TaskLogin();
-		appClient.executeTask(task);
+
 	}
 }
