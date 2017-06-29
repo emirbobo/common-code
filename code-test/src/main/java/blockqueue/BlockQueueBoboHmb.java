@@ -1,6 +1,13 @@
 package blockqueue;
 
+import com.google.common.collect.Lists;
+import jdk.nashorn.internal.ir.Block;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -8,13 +15,17 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class BlockQueueBoboHmb {
 
-    static ConcurrentLinkedQueue<Integer> block = new ConcurrentLinkedQueue<Integer>();
-    String lock = new String();
+    static BlockingQueue<Integer> block = new ArrayBlockingQueue<Integer>(1);
+    byte[] lock = new byte[0];
 
     static BlockQueueBoboHmb b = new BlockQueueBoboHmb();
-    final int full_size = 10;
+    final int full_size = 1;
 
     public static void main(String [] args){
+        List blockList = new ArrayList(1);
+        blockList.add(1);
+        blockList.add(1);
+        blockList.add(1);
         consumer c = b.new consumer();
         producer p = b.new producer();
         Thread tc = new Thread(c);

@@ -35,8 +35,8 @@ public class BlockQueueBobo {
         int nextPut = new Random().nextInt(1000);
         block.add(nextPut);
         log("now add nextValue = "+nextPut);
-
     }
+
     private static void take(){
 
 //        Integer poll = block.poll();
