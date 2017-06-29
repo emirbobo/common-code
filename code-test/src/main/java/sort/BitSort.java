@@ -61,7 +61,6 @@ public class BitSort {
             System.exit(1);
         }
 
-        System.out.println(length / 32 + (length % 32 == 0 ? 0 : 1));
         bitValus = new int[length / 32 + (length % 32 == 0 ? 0 : 1)];
 
     }
@@ -80,14 +79,16 @@ public class BitSort {
     }
 
     public void setBitValus(int index){
+
         if(index <=0 ){
             System.out.println("index error , exit !");
             System.exit(1);
         }
 
         int intValue = bitValus[ index / 32 ];//找到数值在哪个整数上
-        bitValus[ intValue ] =   intValue | bits[index % 32];//找到数值在哪个位上并赋值
+        bitValus[ index / 32 ] =   intValue | bits[index % 32];//找到数值在哪个位上并赋值
     }
+
     public static void main1(String [] args){
         int i =0;
         while(i< 10) {
@@ -115,7 +116,7 @@ public class BitSort {
             while((str = br.readLine()) != null) {
                 bitSort.setBitValus(Integer.parseInt(str.substring(3)));
             }
-            int bitUnit = bitSort.bitValus.length;
+//            int bitUnit = bitSort.bitValus.length;
             for(int j = 0; j < 100000000 ; j++){
                 int a = bitSort.getBitInt(j);
                 if(a != 0) {
